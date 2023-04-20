@@ -1,22 +1,24 @@
     //could have just grabbed elems by id, then multiplied by 
 //value... but thats no fun
 const errMsg = document.getElementById("err-msg");
-
 const inputs = document.getElementsByClassName("input");
 const inputsArray = Array.from(inputs);
 
 
 
 // hide the errmsg if a field is changed
+function errMsgOff() {
+    !errMsg.classList.contains('hide') ? 
+    errMsg.classList.add('hide') :
+    null
+}
+
 inputsArray.map(input => {
-    input.addEventListener("input", () => {
-        !errMsg.classList.contains('hide') ? 
-        errMsg.classList.add('hide') :
-        null
-    })
+    input.addEventListener("input", errMsgOff())
 })
 
 //maps the id as a key to its value over an object
+//?could i have use the reduce function to get them all by id?
 function inputValues() {
     const inputValues = inputsArray.reduce((acc, input) => {
         acc[input.id] = input.value;
@@ -33,8 +35,9 @@ const totalMailingCostResult = document.getElementById('total-mailing-cost')
 const clear = document.getElementById('clear')
 
 
-clear.addEventListener('click', ()=> {
-
+clear.addEventListener('click', (event)=> {
+    event.preventDefault();
+    errMsgOff()
     const inputValuesObj = inputValues();
 
     //set obj values to 0
@@ -92,11 +95,10 @@ try{
     totalMailingCostResult.textContent = totalMailingCost
     costPerPieceResult.textContent = inputValuesObj["cost-per-piece-input"]
     postageResult.textContent = inputValuesObj["postage-input"]
+    
 } catch (error) {
     console.log("err")
     errMsg.textContent = error.message
     errMsg.classList.remove('hide')  
     }
 }
-
-

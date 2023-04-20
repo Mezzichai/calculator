@@ -15,27 +15,29 @@
         <div class="hide err-msg" id="err-msg"></div>
         <form class="input-container" onsubmit='handleSubmit()'>
             <label class="name-container">
-                Enter the x
+                Enter the quantity
                 <input class='input' id='qty-input' type='number' placeholder="Enter the quantity"/>
             </label>
           
             <label class="name-container">
-                Enter the x
+                Enter the data cost
                 <input class='input' id='data-cost-input' type='number' placeholder="Enter the data cost"/>
             </label>
 
             <label class="name-container">
-                Enter the x
+                Enter the cost-per-piece
                 <input class='input' id='cost-per-piece-input' type='number' placeholder="Enter the cost-per-piece"/>
             </label>  
 
             <label class="name-container">
-                Enter the x
+                Enter the postage-input
                 <input class='input' id='postage-input' type='number' placeholder="Enter the postage cost"/>
             </label>
+            <div>
+                <button class="btn" id="clear">Clear All</button>
                 <input type="submit" value="submit" class="btn" id="submit"/>
+            </div>
         </form>
-        <button class="btn" id="clear">Clear All</button>
         <div class="total-container">
             <label class="name-container">
                 Cost per-piece subtotal:

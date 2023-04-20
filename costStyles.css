@@ -62,7 +62,10 @@ main {
 }
 
 .btn {
+
+    width: 6rem;
     padding: .5rem;
+    margin: .5rem 0 .5rem 0;
     justify-content: center;
 }
 
@@ -71,6 +74,6 @@ main {
     justify-content: center;
 }
 
-.total-container {
+/* .total-container {
 
-}
+} */
