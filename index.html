@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="costStyles.css">
+    <script src="app.js" defer></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator</title>
+</head>
+<body>
+    <header class="header">Cost Calculator</header>
+    <main>
+        <div class="hide err-msg" id="err-msg"></div>
+        <form class="input-container" onsubmit='handleSubmit()'>
+            <label class="name-container">
+                Enter the x
+                <input class='input' id='qty-input' type='number' placeholder="Enter the quantity"/>
+            </label>
+          
+            <label class="name-container">
+                Enter the x
+                <input class='input' id='data-cost-input' type='number' placeholder="Enter the data cost"/>
+            </label>
+
+            <label class="name-container">
+                Enter the x
+                <input class='input' id='cost-per-piece-input' type='number' placeholder="Enter the cost-per-piece"/>
+            </label>  
+
+            <label class="name-container">
+                Enter the x
+                <input class='input' id='postage-input' type='number' placeholder="Enter the postage cost"/>
+            </label>
+                <input type="submit" value="submit" class="btn" id="submit"/>
+        </form>
+        <button class="btn" id="clear">Clear All</button>
+        <div class="total-container">
+            <label class="name-container">
+                Cost per-piece subtotal:
+                <span class='result' id='cost-per-piece-sub-total'></span>
+            </label>
+            <label class="name-container">
+                Postage cost subtotal:
+                <span class='result' id='postage-sub-total'></span>
+            </label>
+
+            <label class="name-container">
+                Total mailing cost:
+                <span class='total' id='total-mailing-cost'></span>
+            </label>
+            <label class="name-container">
+                Cost per-piece:
+                <span class='total' id='cost-per-piece'></span>
+            </label>
+        </div>
+
+    </main>
+</body>
+</html>
