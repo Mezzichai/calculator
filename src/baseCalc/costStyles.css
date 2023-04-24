@@ -43,21 +43,54 @@ main {
     display: none;
 }
 
+
+/* v input related styles v */
 .input-container {
-     display: flex;
-    /* grid-template-columns: 1fr 1fr; */
+     display: grid;
+    grid-template-areas: 
+    "qty dtc"
+    "ptc poc";
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
 }
 
+#print-cost {
+    grid-area: ptc;
+}
+
+#qty-input {
+    grid-area: qty;
+}
+#data-cost-input {
+    grid-area: poc;
+}
+#postage-input {
+    grid-area: dtc;
+}
+
+.input {
+    width: 100%;
+    padding: .5rem;
+}
+
+.dropdown {
+    
+    width: 100%;
+    padding: .5rem;
+}
+
+.dropdown-option {
+
+}
+
+/* ^ input related styles ^ */
+
+
 .total-container {
-    width: auto;
-   
     display: grid;
     grid-gap: 10px;
-    
     grid-template-areas: 
     "cppsLabel cppsOutput"
     "pcsLabel pcsOutput"
@@ -103,10 +136,7 @@ main {
     width: 13rem;
 }
 
-.input {
-    width: 100%;
-    padding: .5rem;
-}
+
 
 .btn {
 

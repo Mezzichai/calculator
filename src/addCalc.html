@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="newCalc.css">
+    <link rel="stylesheet" href="costStyles.css">
+    <script src="addNewCalc.js" type="module" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Calculator</title>
+</head>
+<body>
+    <main>
+        <nav class="calc-nav">
+            <ul>
+                <li>
+                    <a href="index.html"><i class="fa fa-plus"></i></a>
+                </li>
+              </ul>
+        </nav>
+
+        <div class="calc-container">
+            <header class="header rename">
+                <input
+                value="New Calculator" 
+                type="text"
+                class="calc-title-field"/>
+                <div class="hide err-msg" id="err-msg"></div>
+            </header>
+
+            
+            <form class="input-container" id="input-container" onsubmit='handleSubmit()'>
+
+                <button id="add-field"><i class="fa fa-plus"></i>Add a field
+                </button>
+                
+                <div>
+                    <button class="btn" id="clear">Clear All</button>
+                    <input type="submit" value="submit" class="btn" id="submit"/>
+                </div>
+            </form>
+
+            <div class="total-container">
+                <button class="add-result">
+                    <i class="fa fa-plus"></i>Add an output
+                </button>
+            
+            </div>
+        </div>
+    </main>
+</body>
+</html>

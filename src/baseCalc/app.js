@@ -1,4 +1,4 @@
-import  parseToInt  from './parseTo.js';
+import parseToInt from '../parseTo.js';
 
   //could have just grabbed elems by id, then multiplied by 
 //value... but thats no fun
@@ -84,10 +84,12 @@ try{
     postageSub.textContent = 
         inputValuesObj["postage-input"] * inputValuesObj["qty-input"]
 
-    totalMailingCost.textContent = parseToInt(costPerPieceSub.textContent) + 
-                                   parseToInt(postageSub.textContent)
+    totalMailingCost.textContent = 
+        parseToInt(costPerPieceSub.textContent) + 
+        parseToInt(postageSub.textContent)
+
     costPerPieceResult.textContent = parseToInt(totalMailingCost.textContent)/inputValuesObj['qty-input']
-    console.log(costPerPieceResult.textContent)
+    
     if (isNaN(parseToInt(totalMailingCost.textContent))) {
         throw new Error("Please fill out all the fields")
     }

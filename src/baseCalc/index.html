@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="costStyles.css">
+    <script src="app.js" type="module" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator</title>
+</head>
+<body>
+    <main>
+        <nav class="calc-nav">
+            <ul>
+           
+                <li>
+                    <a href="addCalc.html"><i class="fa fa-plus"></i></a>
+                </li>
+                
+              </ul>
+           
+        </nav>
+
+        <div class="calc-container">
+            <header class="header">
+                Cost Calculator
+
+                <div class="hide err-msg" id="err-msg"></div>
+            </header>
+
+
+            <form class="input-container" onsubmit='handleSubmit()' id="input-form">
+                <label class="name-container" id='qty-input' >
+                    Enter the quantity
+                    <input class='input' 
+                    
+                    type='number'
+                    step="0.01"
+                    placeholder="Enter the quantity"/>
+                </label>
+            
+                <label class="name-container" id='data-cost-input'>
+                    Enter the data cost
+                    <input class='input' 
+                    type='number' 
+                    step="0.01"
+                    placeholder="Enter the data cost"/>
+                 
+                </label>
+
+                <label class="name-container" id="print-cost">
+                    <select class="dropdown" >  
+                        <option class="downdown-option">Select the print cost</option> 
+                        <option value="PC" class="downdown-option">PC</option> 
+                        <option value="LETTER" class="downdown-option">LETTER</option>  
+                        <option value="SNAP" class="downdown-option">SNAP</option>  
+                    </select>  
+                </label>  
+
+                <label class="name-container" id='postage-input'>
+                    Enter the postage cost
+                    <input class='input' 
+                    type='number'
+                    step="0.01" 
+                    placeholder="Enter the postage cost"/>
+                </label>
+            </form>
+            <div>
+                <button class="btn" id="clear">Clear All</button>
+                <input type="submit" value="submit" class="btn" form="input-form"/>
+            </div>
+
+            <div class="total-container">
+                <label class="total name-container" id="cpps">
+                    Cost per-piece subtotal:
+                </label>
+                    <span class='result cppso' id='cost-per-piece-sub-total'></span>
+                
+                <label class="total name-container" id="pcs">
+                    Postage cost subtotal:
+                </label>
+                    <span class='result pcso' id='postage-sub-total'></span>
+
+                <label class="total name-container" id="tmc">
+                    Total mailing cost:
+                </label>
+                    <span class='total tmco' id='total-mailing-cost'></span>
+            
+                    <label class="total name-container" id="cppt">
+                        Cost per-piece:
+                    </label>
+                        <span class='total cppto' id='cost-per-piece'></span>
+            
+            </div>
+        </div>
+    </main>
+</body>
+</html>
