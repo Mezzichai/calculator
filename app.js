@@ -1,21 +1,23 @@
-    //could have just grabbed elems by id, then multiplied by 
+import  parseToInt  from './parseTo.js';
+
+  //could have just grabbed elems by id, then multiplied by 
 //value... but thats no fun
 const errMsg = document.getElementById("err-msg");
 const inputs = document.getElementsByClassName("input");
 const inputsArray = Array.from(inputs);
 
 
-
-// hide the errmsg if a field is changed
+// hide the errmsg
 function errMsgOff() {
     !errMsg.classList.contains('hide') ? 
     errMsg.classList.add('hide') :
     null
 }
-
+//add an event listener to trigger the errMsgOff when any field is changed
 inputsArray.map(input => {
-    input.addEventListener("input", errMsgOff())
+    input.addEventListener("input", errMsgOff)
 })
+
 
 //maps the id as a key to its value over an object
 //?could i have use the reduce function to get them all by id?
@@ -28,10 +30,10 @@ function inputValues() {
     return inputValues
 }
 
-
-const costPerPieceResult = document.getElementById("cost-per-piece-sub-total")
-const postageResult = document.getElementById("postage-sub-total")
-const totalMailingCostResult = document.getElementById('total-mailing-cost')
+const costPerPieceSub = document.getElementById("cost-per-piece-sub-total")
+const postageSub = document.getElementById("postage-sub-total")
+const costPerPieceResult = document.getElementById("cost-per-piece")
+const totalMailingCost = document.getElementById('total-mailing-cost')
 const clear = document.getElementById('clear')
 
 
@@ -42,19 +44,19 @@ clear.addEventListener('click', (event)=> {
 
     //set obj values to 0
     for (const key in inputValuesObj) {
-        if (Object.hasOwnProperty.call(inputValuesObj, key)) {
+        // if (Object.hasOwnProperty.call(inputValuesObj, key)) {
           inputValuesObj[key] = '';
-        }
+        // }
     }
 
     //set element values to 0
     inputsArray.forEach(input => {
         input.value = inputValuesObj[input.id]
     })
-
-    totalMailingCostResult.textContent = 0
+    postageSub.textContent = 0
+    costPerPieceSub.textContent = 0
     costPerPieceResult.textContent = 0
-    postageResult.textContent = 0
+    totalMailingCost.textContent = 0
 })
 
 
@@ -64,40 +66,34 @@ form.addEventListener("submit", handleSubmit);
 
 
 
-function handleSubmit() {
-    //passing the event object from the function doesnt work either
-    event.preventDefault()
-    
 
-//need to put the submit handler so it recalculates everytime it is invoked
-// const inputValuesObj = getInputValues();
-const inputValuesObj = inputValues();
+function handleSubmit(e) {
+//passing the event object from the function doesnt work either
+e.preventDefault()
 
-
-// parsing the values as integers
-for (const key in inputValuesObj) {
-    if (Object.hasOwnProperty.call(inputValuesObj, key)) {
-      inputValuesObj[key] = parseInt(inputValuesObj[key], 10);
-    }
-  }
-
+//needs to be invoked and parsed here so that we calculate the last used field values
+const inputValuesObj = parseToInt(inputValues());
 
 try{
-    let totalMailingCost = inputValuesObj["qty-input"] + 
-    inputValuesObj["data-cost-input"] +
-    inputValuesObj["cost-per-piece-input"] +
-    inputValuesObj["postage-input"];
-    
-    if (isNaN(totalMailingCost)) {
+    costPerPieceSub.textContent = (
+        inputValuesObj["data-cost-input"] + 
+        inputValuesObj["print-input"] + 
+        inputValuesObj["postage-input"]) * 
+        inputValuesObj["qty-input"]
+
+    postageSub.textContent = 
+        inputValuesObj["postage-input"] * inputValuesObj["qty-input"]
+
+    totalMailingCost.textContent = parseToInt(costPerPieceSub.textContent) + 
+                                   parseToInt(postageSub.textContent)
+    costPerPieceResult.textContent = parseToInt(totalMailingCost.textContent)/inputValuesObj['qty-input']
+    console.log(costPerPieceResult.textContent)
+    if (isNaN(parseToInt(totalMailingCost.textContent))) {
         throw new Error("Please fill out all the fields")
     }
-
-    totalMailingCostResult.textContent = totalMailingCost
-    costPerPieceResult.textContent = inputValuesObj["cost-per-piece-input"]
-    postageResult.textContent = inputValuesObj["postage-input"]
     
 } catch (error) {
-    console.log("err")
+    console.log(error)
     errMsg.textContent = error.message
     errMsg.classList.remove('hide')  
     }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="costStyles.css">
-    <script src="app.js" defer></script>
+    <script src="app.js" type="module" defer></script>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,28 +10,50 @@
     <title>Cost Calculator</title>
 </head>
 <body>
-    <header class="header">Cost Calculator</header>
     <main>
-        <div class="hide err-msg" id="err-msg"></div>
+    
+    <div class="calc-container">
+        <header class="header">
+            Cost Calculator
+            <div class="hide err-msg" id="err-msg"></div>
+        </header>
+
+        
         <form class="input-container" onsubmit='handleSubmit()'>
             <label class="name-container">
                 Enter the quantity
-                <input class='input' id='qty-input' type='number' placeholder="Enter the quantity"/>
+                <input class='input' 
+                id='qty-input' 
+                type='number'
+                step="0.01"
+                placeholder="Enter the quantity"/>
             </label>
           
             <label class="name-container">
                 Enter the data cost
-                <input class='input' id='data-cost-input' type='number' placeholder="Enter the data cost"/>
+                <input class='input' 
+                id='data-cost-input' 
+                type='number' 
+                step="0.01"
+                placeholder="Enter the data cost"/>
             </label>
 
             <label class="name-container">
-                Enter the cost-per-piece
-                <input class='input' id='cost-per-piece-input' type='number' placeholder="Enter the cost-per-piece"/>
+                Enter the print cost
+                <input class='input' 
+                id='print-input' 
+                type='number' 
+                step="0.01" 
+                placeholder="Enter the print cost"/>
             </label>  
 
             <label class="name-container">
-                Enter the postage-input
-                <input class='input' id='postage-input' type='number' placeholder="Enter the postage cost"/>
+                Enter the postage cost
+                <input class='input' 
+                id='postage-input'
+                type='number'
+                step="0.01" 
+                placeholder="Enter the postage cost"/>
             </label>
             <div>
                 <button class="btn" id="clear">Clear All</button>
@@ -39,25 +61,28 @@
             </div>
         </form>
         <div class="total-container">
-            <label class="name-container">
+            <label class="total name-container" id="cpps">
                 Cost per-piece subtotal:
-                <span class='result' id='cost-per-piece-sub-total'></span>
             </label>
-            <label class="name-container">
+                <span class='result cppso' id='cost-per-piece-sub-total'></span>
+            
+            <label class="total name-container" id="pcs">
                 Postage cost subtotal:
-                <span class='result' id='postage-sub-total'></span>
             </label>
+                <span class='result pcso' id='postage-sub-total'></span>
 
-            <label class="name-container">
+            <label class="total name-container" id="tmc">
                 Total mailing cost:
-                <span class='total' id='total-mailing-cost'></span>
             </label>
-            <label class="name-container">
-                Cost per-piece:
-                <span class='total' id='cost-per-piece'></span>
-            </label>
+                <span class='total tmco' id='total-mailing-cost'></span>
+        
+                <label class="total name-container" id="cppt">
+                    Cost per-piece:
+                </label>
+                    <span class='total cppto' id='cost-per-piece'></span>
+         
         </div>
-
+    </div>
     </main>
 </body>
 </html>
